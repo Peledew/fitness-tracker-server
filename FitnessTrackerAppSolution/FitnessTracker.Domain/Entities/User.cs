@@ -1,4 +1,4 @@
-﻿using FitnessTracker.Domain.Enums;
+﻿using FitnessTracker.Shared.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
