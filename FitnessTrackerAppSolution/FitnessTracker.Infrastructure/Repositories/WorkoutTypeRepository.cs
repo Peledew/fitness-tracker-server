@@ -5,8 +5,8 @@ using FitnessTracker.Infrastructure.Repositories.Abstract;
 
 namespace FitnessTracker.Infrastructure.Repositories
 {
-    internal class UserRepository : BaseRepository<User>, IUserRepository
+    internal class WorkoutTypeRepository : BaseRepository<WorkoutType>, IWorkoutTypeRepository
     {
-        public UserRepository(AppDbContext context) : base(context) { }
+        public WorkoutTypeRepository (AppDbContext context) : base (context) { }
     }
 }

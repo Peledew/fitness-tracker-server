@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FitnessTracker.Infrastructure\FitnessTracker.Infrastructure.csproj" />
+    <ProjectReference Include="..\FitnessTracker.Services.Abstractions\FitnessTracker.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\FitnessTracker.Services\FitnessTracker.Services.csproj" />
   </ItemGroup>
 
 </Project>
