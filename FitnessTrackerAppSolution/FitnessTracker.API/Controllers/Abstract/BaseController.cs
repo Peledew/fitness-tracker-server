@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitnessTracker.API.Controllers.Abstract
 {
     [ApiController]
-    [Route("api/[controller]")]
     public abstract class BaseController<T> : ControllerBase where T : class
     {
         protected readonly IBaseService<T> _service;
@@ -33,7 +32,7 @@ namespace FitnessTracker.API.Controllers.Abstract
         public virtual async Task<ActionResult<T>> Add([FromBody] T entity)
         {
             var result = await _service.AddAsync(entity);
-            return CreatedAtAction(nameof(GetById), new { id = GetEntityId(result) }, result);
+            return Created("", result);
         }
 
         [HttpPut("{id}")]
@@ -51,8 +50,5 @@ namespace FitnessTracker.API.Controllers.Abstract
             await _service.DeleteAsync(id);
             return NoContent();
         }
-
-        // This must be implemented by derived controller since reflection-based ID extraction is not reliable
-        protected abstract int GetEntityId(T entity);
     }
 }
