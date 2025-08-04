@@ -22,6 +22,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddInfrastructureServices();       // Repositories registration
 builder.Services.AddApplicationServices();          // Services registration
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

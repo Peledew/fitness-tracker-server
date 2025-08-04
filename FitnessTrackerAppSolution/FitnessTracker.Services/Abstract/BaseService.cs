@@ -25,7 +25,7 @@ namespace FitnessTracker.Services.Abstract
         public virtual async Task UpdateAsync(T entity)
         {
             await _repository.UpdateAsync(entity);
-        }
+        }//TODO: Change Update logic
 
         public virtual async Task DeleteAsync(int id)
         {
