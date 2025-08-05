@@ -4,42 +4,50 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitnessTracker.API.Controllers.Abstract
 {
     [ApiController]
-    public abstract class BaseController<T> : ControllerBase where T : class
+    public abstract class BaseController<TDto> : ControllerBase 
+        where TDto : class
     {
-        protected readonly IBaseService<T> _service;
+        protected readonly IBaseService<TDto> _service;
 
-        protected BaseController(IBaseService<T> service)
+        protected BaseController(IBaseService<TDto> service)
         {
             _service = service;
         }
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<T>> GetById(int id)
+        public virtual async Task<ActionResult<TDto>> GetById(int id)
         {
             var result = await _service.GetByIdAsync(id);
-            if (result == null) return NotFound();
+            if (result == null) 
+                return NotFound();
+
             return Ok(result);
         }
 
         [HttpGet]
-        public virtual async Task<ActionResult<IEnumerable<T>>> GetAll()
+        public virtual async Task<ActionResult<IEnumerable<TDto>>> GetAll()
         {
             var results = await _service.GetAllAsync();
             return Ok(results);
         }
 
         [HttpPost]
-        public virtual async Task<ActionResult<T>> Add([FromBody] T entity)
+        public virtual async Task<ActionResult<TDto>> Add([FromBody] TDto entity)
         {
             var result = await _service.AddAsync(entity);
             return Created("", result);
         }
 
         [HttpPut("{id}")]
-        public virtual async Task<IActionResult> Update(int id, [FromBody] T entity)
+        public virtual async Task<IActionResult> Update(int id, [FromBody] TDto entity)
         {
-            if (!await _service.ExistsAsync(id)) return NotFound();
-            await _service.UpdateAsync(entity);
+            if (entity == null)
+                return BadRequest("Request body is null.");
+
+            if (!await _service.ExistsAsync(id)) 
+                return NotFound();
+
+            await _service.UpdateAsync(id, entity);
             return NoContent();
         }
 

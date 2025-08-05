@@ -8,7 +8,10 @@ namespace FitnessTracker.Contracts.Profiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, UserDto>();
+            CreateMap<UserDto, User>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Workouts, opt => opt.Ignore());
         }
     }
 }

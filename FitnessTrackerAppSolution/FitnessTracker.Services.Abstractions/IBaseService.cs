@@ -1,11 +1,12 @@
 ﻿namespace FitnessTracker.Services.Abstractions
 {
-    public interface IBaseService<T> where T : class
+    public interface IBaseService<TDto> 
+        where TDto : class
     {
-        Task<T?> GetByIdAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
+        Task<TDto?> GetByIdAsync(int id);
+        Task<IEnumerable<TDto>> GetAllAsync();
+        Task<TDto> AddAsync(TDto dto);
+        Task UpdateAsync(int entityId, TDto dto);
         Task DeleteAsync(int id);
         Task<bool> ExistsAsync(int id);
     }

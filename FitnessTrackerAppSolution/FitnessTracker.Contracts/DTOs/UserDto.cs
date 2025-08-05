@@ -20,7 +20,5 @@ namespace FitnessTracker.Contracts.DTOs
         public UserGender? Gender { get; set; }
 
         public UserRole? Role { get; set; }
-
-        public ICollection<Workout>? Workouts { get; set; }
     }
 }

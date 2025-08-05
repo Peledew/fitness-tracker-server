@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FitnessTracker.Infrastructure.Repositories.Abstract
 {
-    internal abstract class BaseRepository<T> : IBaseRepository<T> where T : class
+    internal abstract class BaseRepository<T> : IBaseRepository<T> 
+        where T : class
     {
         protected readonly DbContext _context;
         protected readonly DbSet<T> _dbSet;
@@ -32,16 +33,15 @@ namespace FitnessTracker.Infrastructure.Repositories.Abstract
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
-        {
-            _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
-        }
-
         public async Task<bool> ExistsAsync(int id)
         {
             var entity = await _dbSet.FindAsync(id);
             return entity != null;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

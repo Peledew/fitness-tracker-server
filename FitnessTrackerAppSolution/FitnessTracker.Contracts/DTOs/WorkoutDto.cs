@@ -1,11 +1,4 @@
 ﻿using FitnessTracker.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FitnessTracker.Contracts.DTOs
 {
@@ -15,7 +8,7 @@ namespace FitnessTracker.Contracts.DTOs
 
         public int? UserId { get; set; }
 
-        public WorkoutType? Type { get; set; }
+        public int? WorkoutTypeId { get; set; }
 
         public TimeSpan? Duration { get; set; }
 

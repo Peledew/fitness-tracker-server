@@ -9,6 +9,7 @@ namespace FitnessTracker.Services.Extensions
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWorkoutTypeService, WorkoutTypeService>();
+            services.AddScoped<IWorkoutService, WorkoutService>();
 
             return services;
         }

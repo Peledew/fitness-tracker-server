@@ -10,6 +10,7 @@ namespace FitnessTracker.Infrastructure.Extensions
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWorkoutTypeRepository, WorkoutTypeRepository>();
+            services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 
             return services;
         }
