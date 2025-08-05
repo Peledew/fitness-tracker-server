@@ -18,6 +18,12 @@ namespace FitnessTracker.Infrastructure.Context
             .WithOne(w => w.User)
             .HasForeignKey(w => w.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Workout>()
+            .HasOne(w => w.Type)
+            .WithMany()
+            .HasForeignKey(w => w.WorkoutTypeId)
+            .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

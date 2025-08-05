@@ -1,4 +1,6 @@
 using FitnessTracker.Infrastructure.Context;
+using FitnessTracker.Infrastructure.Extensions;
+using FitnessTracker.Services.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -15,6 +17,12 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("SQLServer"));
 });
+
+//Services registration
+builder.Services.AddInfrastructureServices();       // Repositories registration
+builder.Services.AddApplicationServices();          // Services registration
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
