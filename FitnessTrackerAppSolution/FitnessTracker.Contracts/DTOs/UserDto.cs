@@ -1,5 +1,4 @@
-﻿using FitnessTracker.Domain.Entities;
-using FitnessTracker.Shared.Enums;
+﻿using FitnessTracker.Shared.Enums;
 
 namespace FitnessTracker.Contracts.DTOs
 {

@@ -27,15 +27,13 @@ namespace FitnessTracker.API.Controllers.Abstract
         [HttpGet]
         public virtual async Task<ActionResult<IEnumerable<TDto>>> GetAll()
         {
-            var results = await _service.GetAllAsync();
-            return Ok(results);
+            return Ok(await _service.GetAllAsync());
         }
 
         [HttpPost]
         public virtual async Task<ActionResult<TDto>> Add([FromBody] TDto entity)
         {
-            var result = await _service.AddAsync(entity);
-            return Created("", result);
+            return Created("", await _service.AddAsync(entity));
         }
 
         [HttpPut("{id}")]

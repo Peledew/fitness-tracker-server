@@ -2,7 +2,5 @@
 
 namespace FitnessTracker.Services.Abstractions
 {
-    public interface IWorkoutTypeService : IBaseService<WorkoutTypeDto>
-    {
-    }
+    public interface IWorkoutTypeService : IBaseService<WorkoutTypeDto> { }
 }

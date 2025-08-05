@@ -25,8 +25,7 @@ namespace FitnessTracker.Services.Abstract
 
         public virtual async Task<IEnumerable<TDto>> GetAllAsync()
         {
-            var entities = await _repository.GetAllAsync();
-            return _mapper.Map<IEnumerable<TDto>>(entities);
+            return _mapper.Map<IEnumerable<TDto>>(await _repository.GetAllAsync());
         }
 
         public virtual async Task<TDto> AddAsync(TDto dto)
@@ -58,6 +57,4 @@ namespace FitnessTracker.Services.Abstract
             return await _repository.ExistsAsync(id);
         }
     }
-
-
 }

@@ -11,8 +11,16 @@ namespace FitnessTracker.Services
     {
         private readonly IWorkoutTypeRepository _workoutTypeRepository;
 
-        public WorkoutTypeService(IWorkoutTypeRepository workoutTypeRepository, IMapper mapper)
-            : base(workoutTypeRepository, mapper)
+        public WorkoutTypeService
+            (
+                IWorkoutTypeRepository workoutTypeRepository,
+                IMapper mapper
+            )
+            : base
+                (
+                    workoutTypeRepository,
+                    mapper
+                )
         {
             _workoutTypeRepository = workoutTypeRepository;
         }

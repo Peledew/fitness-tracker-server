@@ -11,8 +11,16 @@ namespace FitnessTracker.Services
     {
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
-            : base(userRepository, mapper)
+        public UserService
+            (
+                IUserRepository userRepository,
+                IMapper mapper
+            )
+            : base
+                (
+                    userRepository,
+                    mapper
+                )
         {
             {
                 _userRepository = userRepository;

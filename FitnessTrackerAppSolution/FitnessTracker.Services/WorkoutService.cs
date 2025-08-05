@@ -18,7 +18,11 @@ namespace FitnessTracker.Services
                 IMapper mapper,
                 IWorkoutTypeService workoutTypeService
             ) 
-            :base(workoutRepository, mapper)
+            :base
+                (
+                    workoutRepository,
+                    mapper
+                )
         {
             _workoutRepository = workoutRepository;
             _workoutTypeService = workoutTypeService;
@@ -26,6 +30,9 @@ namespace FitnessTracker.Services
 
         public override async Task<WorkoutDto> AddAsync(WorkoutDto dto)
         {
+            if (dto.WorkoutTypeId == null)
+                throw new ArgumentException("WorkoutTypeId is required.");
+
             var entity = _mapper.Map<Workout>(dto);
             var typeDto = await _workoutTypeService.GetByIdAsync(dto.WorkoutTypeId.Value);
 

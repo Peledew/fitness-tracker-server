@@ -1,6 +1,4 @@
-﻿using FitnessTracker.Domain.Entities;
-
-namespace FitnessTracker.Contracts.DTOs
+﻿namespace FitnessTracker.Contracts.DTOs
 {
     public class WorkoutDto
     {
