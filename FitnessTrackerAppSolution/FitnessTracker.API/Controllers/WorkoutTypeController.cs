@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitnessTracker.API.Controllers
 {
     [Route("api/workout-types")]
-    public class WorkoutTypeConroller : BaseController<WorkoutTypeDto>
+    public class WorkoutTypeController : BaseController<WorkoutTypeDto>
     {
         private readonly IWorkoutTypeService _workoutTypeService;
 
-        public WorkoutTypeConroller(IWorkoutTypeService workoutTypeService)
+        public WorkoutTypeController(IWorkoutTypeService workoutTypeService)
             : base(workoutTypeService)
         {
             _workoutTypeService = workoutTypeService;

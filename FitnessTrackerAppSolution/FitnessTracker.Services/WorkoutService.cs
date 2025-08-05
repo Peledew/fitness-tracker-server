@@ -10,7 +10,6 @@ namespace FitnessTracker.Services
     internal class WorkoutService : BaseService<Workout, WorkoutDto>, IWorkoutService
     {
         private readonly IWorkoutRepository _workoutRepository;
-        private readonly IWorkoutTypeService _workoutTypeService;
 
         public WorkoutService
             (
@@ -25,21 +24,24 @@ namespace FitnessTracker.Services
                 )
         {
             _workoutRepository = workoutRepository;
-            _workoutTypeService = workoutTypeService;
         }
 
-        public override async Task<WorkoutDto> AddAsync(WorkoutDto dto)
+        public override async Task<WorkoutDto?> GetByIdAsync(int id)
         {
-            if (dto.WorkoutTypeId == null)
-                throw new ArgumentException("WorkoutTypeId is required.");
+            var workout = await _workoutRepository.GetByIdAsync(id,
+                w => w.User,
+                w => w.Type);
 
-            var entity = _mapper.Map<Workout>(dto);
-            var typeDto = await _workoutTypeService.GetByIdAsync(dto.WorkoutTypeId.Value);
+            return workout == null ? null : _mapper.Map<WorkoutDto>(workout);
+        }
 
-            entity.Type = _mapper.Map<WorkoutType>(typeDto);
+        public override async Task<IEnumerable<WorkoutDto>> GetAllAsync()
+        {
+            var workouts = await _workoutRepository.GetAllAsync(
+                w => w.User,
+                w => w.Type);
 
-            await _workoutRepository.AddAsync(entity);
-            return _mapper.Map<WorkoutDto>(entity);
+            return _mapper.Map<IEnumerable<WorkoutDto>>(workouts);
         }
     }
 }

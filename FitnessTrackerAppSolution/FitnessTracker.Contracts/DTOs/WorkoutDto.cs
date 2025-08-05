@@ -4,8 +4,10 @@
     {
         public int? Id { get; set; }
 
+        public UserDto? User { get; set; }
         public int? UserId { get; set; }
 
+        public WorkoutTypeDto? Type { get; set; }
         public int? WorkoutTypeId { get; set; }
 
         public TimeSpan? Duration { get; set; }

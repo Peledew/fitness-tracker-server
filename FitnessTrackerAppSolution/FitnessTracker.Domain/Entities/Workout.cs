@@ -17,6 +17,7 @@ namespace FitnessTracker.Domain.Entities
 
         [ForeignKey("WorkoutTypeId")]
         public WorkoutType? Type { get; set; }
+        public int? WorkoutTypeId { get; set; }
 
         [Required]
         public required TimeSpan Duration { get; set; }
