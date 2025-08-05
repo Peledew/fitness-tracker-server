@@ -49,6 +49,19 @@ namespace FitnessTracker.API.Controllers.Abstract
             return NoContent();
         }
 
+        [HttpPatch("{id}")]
+        public virtual async Task<IActionResult> PatchUpdate(int id, [FromBody] TDto entity)
+        {
+            if (entity == null)
+                return BadRequest("Request body is null.");
+
+            if (!await _service.ExistsAsync(id))
+                return NotFound();
+
+            await _service.UpdateAsync(id, entity);
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id)
         {
