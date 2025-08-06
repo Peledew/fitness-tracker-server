@@ -26,5 +26,19 @@ namespace FitnessTracker.Services
                 _userRepository = userRepository;
             }
         }
+
+        public async Task<User?> AuthenticateUserAsync(LogInDto dto)
+        {
+            var existingUser = await _userRepository.GetByUsernameAsync(dto.Username);
+            if (existingUser is null)
+                return null;
+
+            return ValidatePassword(dto.Password, existingUser) ? existingUser : null;
+        }
+
+        public bool ValidatePassword(string enteredPassword, User user)
+        {
+            return user.Password == enteredPassword;
+        }
     }
 }
