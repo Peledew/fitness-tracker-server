@@ -2,6 +2,7 @@
 using FitnessTracker.Contracts.DTOs;
 using FitnessTracker.Domain.Entities;
 using FitnessTracker.Domain.Interfaces.Repositories;
+using FitnessTracker.Domain.Records;
 using FitnessTracker.Services.Abstract;
 using FitnessTracker.Services.Abstractions;
 
@@ -42,6 +43,12 @@ namespace FitnessTracker.Services
                 w => w.Type);
 
             return _mapper.Map<IEnumerable<WorkoutDto>>(workouts);
+        }
+
+        public async Task<List<WeeklyWorkoutStatsDto>> GetWeeklyStatsAsync(int userId, int month, int year)
+        {
+            var data = _mapper.Map<List<WeeklyWorkoutStatsDto>>(await _workoutRepository.GetWeeklyStatsAsync(userId, month, year));
+            return data;
         }
     }
 }

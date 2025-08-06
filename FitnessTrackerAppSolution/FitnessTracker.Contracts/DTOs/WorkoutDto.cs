@@ -11,6 +11,7 @@
         public int? WorkoutTypeId { get; set; }
 
         public TimeSpan? Duration { get; set; }
+        public DateTime? WorkoutDate { get; set; }
 
         public int? BurnedCalories { get; set; }
 

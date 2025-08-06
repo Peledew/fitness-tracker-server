@@ -22,6 +22,9 @@ namespace FitnessTracker.Domain.Entities
         [Required]
         public required TimeSpan Duration { get; set; }
 
+        [Required]
+        public required DateTime WorkoutDate { get; set; }
+
         public int? BurnedCalories { get; set; }
 
         [Required]

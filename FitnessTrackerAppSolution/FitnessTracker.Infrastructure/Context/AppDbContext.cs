@@ -1,12 +1,13 @@
 ﻿using FitnessTracker.Domain.Entities;
+using FitnessTracker.Domain.Records;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace FitnessTracker.Infrastructure.Context
 {
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
         public DbSet<User> Users { get; set; }
         public DbSet<WorkoutType> WorkoutTypes { get; set; }
         public DbSet<Workout> Workouts { get; set; }
