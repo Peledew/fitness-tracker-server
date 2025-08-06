@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FitnessTracker.API.Controllers
 {
     [Route("api/workout-types")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class WorkoutTypeController : BaseController<WorkoutTypeDto>
     {
         private readonly IWorkoutTypeService _workoutTypeService;

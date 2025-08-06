@@ -28,15 +28,14 @@ namespace FitnessTracker.Domain.Entities
         public required string Email { get; set; }
 
         [Required]
+        [EnumDataType(typeof(UserGender))]
         public required UserGender Gender { get; set; }
 
         [Required]
+        [EnumDataType(typeof(UserRole))]
         public required UserRole Role { get; set; }
 
         [JsonIgnore]
         public ICollection<Workout>? Workouts { get; set; }
     }
 }
-
-// Username and email should be UNIQUE
-// Role and Gender values -> only ones in enums

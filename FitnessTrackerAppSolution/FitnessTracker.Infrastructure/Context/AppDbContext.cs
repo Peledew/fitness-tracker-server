@@ -13,6 +13,7 @@ namespace FitnessTracker.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //Relationships
             builder.Entity<User>()
             .HasMany(u => u.Workouts)
             .WithOne(w => w.User)
@@ -24,6 +25,24 @@ namespace FitnessTracker.Infrastructure.Context
             .WithMany()
             .HasForeignKey(w => w.WorkoutTypeId)
             .OnDelete(DeleteBehavior.SetNull);
+
+            //Enum conversion
+            builder.Entity<User>()
+            .Property(u => u.Gender)
+            .HasConversion<string>();
+
+            builder.Entity<User>()
+            .Property(u => u.Role)
+            .HasConversion<string>();
+
+            //Unique constraints
+            builder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
+
+            builder.Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
         }
     }
 }
