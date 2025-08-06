@@ -4,6 +4,7 @@ using FitnessTracker.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250806144245_3_EnumConversion")]
+    partial class _3_EnumConversion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,9 +98,6 @@ namespace FitnessTracker.Infrastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("WorkoutDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("WorkoutTypeId")
                         .HasColumnType("int");
 
@@ -128,28 +128,6 @@ namespace FitnessTracker.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("workoutTypes");
-                });
-
-            modelBuilder.Entity("FitnessTracker.Domain.Records.WeeklyWorkoutStatsRecord", b =>
-                {
-                    b.Property<double>("AverageDifficulty")
-                        .HasColumnType("float");
-
-                    b.Property<double>("AverageFatigue")
-                        .HasColumnType("float");
-
-                    b.Property<TimeSpan>("TotalDuration")
-                        .HasColumnType("time");
-
-                    b.Property<int>("WeekNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WorkoutCount")
-                        .HasColumnType("int");
-
-                    b.ToTable((string)null);
-
-                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("FitnessTracker.Domain.Entities.Workout", b =>

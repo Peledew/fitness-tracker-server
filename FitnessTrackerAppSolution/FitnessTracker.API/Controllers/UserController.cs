@@ -2,10 +2,12 @@
 using FitnessTracker.Services.Abstractions;
 using FitnessTracker.Contracts.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitnessTracker.API.Controllers
 {
     [Route("api/users")]
+    [Authorize]
     public class UserController : BaseController<UserDto>
     {
         private readonly IUserService _userService;
@@ -17,3 +19,4 @@ namespace FitnessTracker.API.Controllers
         }
     }
 }
+//TODO: Implement Voter -> logged user can only manage his account

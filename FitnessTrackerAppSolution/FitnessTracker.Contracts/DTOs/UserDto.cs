@@ -1,6 +1,4 @@
-﻿using FitnessTracker.Shared.Enums;
-
-namespace FitnessTracker.Contracts.DTOs
+﻿namespace FitnessTracker.Contracts.DTOs
 {
     public class UserDto
     {
@@ -16,8 +14,8 @@ namespace FitnessTracker.Contracts.DTOs
 
         public  string? Email { get; set; }
 
-        public UserGender? Gender { get; set; }
+        public string? Gender { get; set; }
 
-        public UserRole? Role { get; set; }
+        public string? Role { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace FitnessTracker.API.Controllers.Abstract
         [HttpPost]
         public virtual async Task<ActionResult<TDto>> Add([FromBody] TDto entity)
         {
-            return Created("", await _service.AddAsync(entity));
+            return Created("", await _service.AddAsync(entity));    //TODO: Find alternative for ""
         }
 
         [HttpPut("{id}")]
@@ -58,7 +58,7 @@ namespace FitnessTracker.API.Controllers.Abstract
             if (!await _service.ExistsAsync(id))
                 return NotFound();
 
-            await _service.UpdateAsync(id, entity);
+            await _service.UpdateAsync(id, entity); //TODO: Change PATCH update field mapping
             return NoContent();
         }
 
