@@ -2,10 +2,12 @@
 using FitnessTracker.Services.Abstractions;
 using FitnessTracker.Contracts.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitnessTracker.API.Controllers
 {
     [Route("api/workout-types")]
+    [Authorize]
     public class WorkoutTypeController : BaseController<WorkoutTypeDto>
     {
         private readonly IWorkoutTypeService _workoutTypeService;

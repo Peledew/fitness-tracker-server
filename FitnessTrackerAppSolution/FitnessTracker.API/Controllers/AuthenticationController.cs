@@ -6,18 +6,18 @@ namespace FitnessTracker.API.Controllers
 {
     [ApiController]
     [Route("api/")]
-    public class AuthorizationController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
-        public AuthorizationController(IUserService userService, IAuthorizationService authorizationService)
+        public AuthenticationController(IUserService userService, IAuthorizationService authorizationService)
         {
             _userService = userService;
             _authorizationService = authorizationService;
         }
 
-        [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] LogInDto loginData)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LogInDto loginData)
         {
             if (loginData == null)
                 return BadRequest();
@@ -28,6 +28,12 @@ namespace FitnessTracker.API.Controllers
                 return NotFound(new { Message = "User not found!" });
 
             return Ok(_authorizationService.ManageTokens(user));
+        }
+
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register([FromBody] UserDto newUser)
+        {
+            return Created("", await _userService.AddAsync(newUser));
         }
     }
 }
