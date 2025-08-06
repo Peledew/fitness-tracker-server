@@ -1,6 +1,5 @@
 ﻿using FitnessTracker.Domain.Entities;
 using FitnessTracker.Contracts.DTOs;
-using System.Security.Claims;
 
 namespace FitnessTracker.Services.Abstractions
 {

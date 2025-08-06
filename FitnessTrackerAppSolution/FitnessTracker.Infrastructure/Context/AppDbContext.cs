@@ -1,7 +1,5 @@
 ﻿using FitnessTracker.Domain.Entities;
-using FitnessTracker.Domain.Records;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace FitnessTracker.Infrastructure.Context
 {
