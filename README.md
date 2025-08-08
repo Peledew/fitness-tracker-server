@@ -63,3 +63,11 @@ dotnet restore
 dotnet build
 dotnet ef database update
 dotnet run
+```
+
+---
+
+## 🙋‍♂️ About Me
+- I’m actively learning and building full-stack apps.
+- If you have feedback or want to collaborate, feel free to reach out!
+- **My email:** petrovicluka967@gmail.com
