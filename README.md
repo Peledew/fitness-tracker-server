@@ -1,6 +1,6 @@
 # 👋 Hi there!
 
-Welcome to the **Fitness Tracker Backend** project! This is the backend API built with **.NET 8** and follows a clean, modular **Onion Architecture**. It powers the Fitness Tracker app by handling user authentication, workout management, and workout type data.
+Welcome to my project! This is the backend API for the Fitness Tracker App, built with .NET 8 following a clean, modular Onion Architecture. It powers user authentication, workout management, and workout type data for the app.
 
 ---
 
