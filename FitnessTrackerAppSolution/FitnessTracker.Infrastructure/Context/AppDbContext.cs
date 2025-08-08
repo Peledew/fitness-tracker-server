@@ -45,10 +45,3 @@ namespace FitnessTracker.Infrastructure.Context
         }
     }
 }
-
-
-//TODO: remove those comments
-
-//MIGRATION: dotnet ef migrations add 1_FirstMigration --startup-project ../FitnessTracker.API --project .
-
-//APPLY: dotnet ef database update --startup-project ../FitnessTracker.API --project .

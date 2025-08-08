@@ -19,4 +19,3 @@ namespace FitnessTracker.API.Controllers
         }
     }
 }
-//TODO: Implement Voter -> logged user can only manage his account
