@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FitnessTracker.API.Controllers
 {
     [Route("api/users")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class UserController : BaseController<UserDto>
     {
         private readonly IUserService _userService;
