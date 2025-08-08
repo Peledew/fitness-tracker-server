@@ -18,6 +18,12 @@ namespace FitnessTracker.API.Controllers
             _workoutService = workoutService;
         }
 
+        [HttpGet("by-user/{userId}")]
+        public async Task<ActionResult<IEnumerable<WorkoutDto>>> GetAllByUserId(int userId)
+        {
+            return Ok(await _workoutService.GetAllByUserIdAsync(userId));
+        }
+
         [HttpGet("stats/weekly")]
         public async Task<ActionResult<List<WeeklyWorkoutStatsDto>>> GetWeeklyStats(
             [FromQuery] int userId,

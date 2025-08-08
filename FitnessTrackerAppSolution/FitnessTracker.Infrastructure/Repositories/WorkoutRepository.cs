@@ -12,6 +12,14 @@ namespace FitnessTracker.Infrastructure.Repositories
     {
         public WorkoutRepository(AppDbContext context) : base(context) { }
 
+        public async Task<IEnumerable<Workout>> GetAllByUserIdAsync(int userId)
+        {
+            return await _dbSet
+                  .Include(x => x.Type)
+                  .Where(x => x.User.Id == userId)
+                  .ToListAsync();
+        }
+
         public async Task<IEnumerable<WeeklyWorkoutStatsRecord>> GetWeeklyStatsAsync(int userId, int month, int year)
         {
             var sql = @"

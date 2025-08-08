@@ -49,5 +49,10 @@ namespace FitnessTracker.Services
             var data = _mapper.Map<List<WeeklyWorkoutStatsDto>>(await _workoutRepository.GetWeeklyStatsAsync(userId, month, year));
             return data;
         }
+
+        public async Task<IEnumerable<WorkoutDto>> GetAllByUserIdAsync(int userId)
+        {
+            return _mapper.Map<IEnumerable<WorkoutDto>>(await _workoutRepository.GetAllByUserIdAsync(userId));
+        }
     }
 }
